@@ -1,0 +1,72 @@
+.section {
+  padding: 38px;
+  border: 1px solid rgba(108, 235, 255, 0.14);
+  border-radius: 34px;
+  background: linear-gradient(180deg, rgba(10, 23, 42, 0.88), rgba(5, 12, 24, 0.96));
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.24);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 28px;
+}
+
+.card {
+  padding: 28px;
+  border-radius: 26px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(108, 235, 255, 0.12);
+}
+
+.featured {
+  transform: translateY(-10px);
+  background:
+    linear-gradient(180deg, rgba(108, 235, 255, 0.12), rgba(214, 255, 78, 0.06)),
+    rgba(9, 20, 38, 0.95);
+}
+
+.label {
+  color: var(--accent-lime);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.card h3 {
+  margin: 16px 0 10px;
+  font-size: 1.35rem;
+}
+
+.card p {
+  margin: 0 0 18px;
+  color: var(--text-muted);
+}
+
+.card ul {
+  margin: 0;
+  padding-left: 20px;
+  color: var(--text-muted);
+}
+
+.card li + li {
+  margin-top: 10px;
+}
+
+@media (max-width: 1080px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .featured {
+    transform: none;
+  }
+}
+
+@media (max-width: 720px) {
+  .section {
+    padding: 22px;
+  }
+}

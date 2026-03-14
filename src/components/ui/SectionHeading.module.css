@@ -1,0 +1,29 @@
+.heading {
+  display: grid;
+  gap: 10px;
+  max-width: 780px;
+}
+
+.center {
+  justify-items: center;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.eyebrow {
+  margin: 0;
+  color: var(--accent-lime);
+  font-family: var(--display-font);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.title {
+  margin: 0;
+  font-family: var(--display-font);
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+}
