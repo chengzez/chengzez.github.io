@@ -5,12 +5,13 @@ type HomeHeaderProps = {
   nav: readonly NavItem[];
   ctaHref: string;
   ctaLabel: string;
+  brandHref?: string;
 };
 
-function HomeHeader({ nav, ctaHref, ctaLabel }: HomeHeaderProps) {
+function HomeHeader({ nav, ctaHref, ctaLabel, brandHref = "index.html" }: HomeHeaderProps) {
   return (
     <header className={styles.header}>
-      <a className={styles.brand} href="#top">
+      <a className={styles.brand} href={brandHref}>
         <span className={styles.pulse} />
         <span>星跃 AI 编程营</span>
       </a>

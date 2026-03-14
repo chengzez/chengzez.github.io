@@ -1,4 +1,3 @@
-import type { Feature } from "../../content/home";
 import styles from "./HeroSection.module.css";
 
 type HeroSectionProps = {
@@ -6,10 +5,12 @@ type HeroSectionProps = {
   title: string;
   description: string;
   chips: readonly string[];
+  details: readonly { title: string; description: string }[];
   primaryAction: { label: string; href: string };
   secondaryAction: { label: string; href: string };
   signal: { label: string; title: string; description: string };
-  spotlight: readonly Feature[];
+  curriculum: readonly string[];
+  useCases: readonly string[];
 };
 
 function HeroSection({
@@ -17,10 +18,12 @@ function HeroSection({
   title,
   description,
   chips,
+  details,
   primaryAction,
   secondaryAction,
   signal,
-  spotlight,
+  curriculum,
+  useCases,
 }: HeroSectionProps) {
   return (
     <section className={styles.hero}>
@@ -50,6 +53,15 @@ function HeroSection({
             <span key={chip}>{chip}</span>
           ))}
         </div>
+
+        <div className={styles.detailGrid}>
+          {details.map((item) => (
+            <article key={item.title} className={styles.detailCard}>
+              <strong>{item.title}</strong>
+              <p>{item.description}</p>
+            </article>
+          ))}
+        </div>
       </div>
 
       <div className={styles.lab}>
@@ -62,24 +74,21 @@ function HeroSection({
         <div className={styles.visualPanel}>
           <div className={styles.orbit} />
           <div className={styles.graphCard}>
-            <p>学习雷达</p>
-            <div className={styles.graph}>
-              <span />
-              <span />
-              <span />
-            </div>
-            <div className={styles.graphMeta}>
-              <b>编程</b>
-              <b>数据</b>
-              <b>表达</b>
+            <p>课程骨架</p>
+            <div className={styles.curriculumGrid}>
+              {curriculum.map((item) => (
+                <span key={item} className={styles.curriculumChip}>
+                  {item}
+                </span>
+              ))}
             </div>
           </div>
 
           <div className={styles.spotlightGrid}>
-            {spotlight.map((item) => (
-              <article key={item.title} className={styles.spotlightCard}>
-                <strong>{item.title}</strong>
-                <p>{item.description}</p>
+            {useCases.map((item, index) => (
+              <article key={item} className={styles.spotlightCard}>
+                <strong className={styles.useCaseTitle}>{`${index + 1}. ${item}`}</strong>
+                <p>从现实 use case 进入课堂，再回到学生自己的作品设计。</p>
               </article>
             ))}
           </div>

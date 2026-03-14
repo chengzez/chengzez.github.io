@@ -6,11 +6,12 @@ type FeatureCardsSectionProps = {
   eyebrow: string;
   title: string;
   items: readonly Feature[];
+  id?: string;
 };
 
-function FeatureCardsSection({ eyebrow, title, items }: FeatureCardsSectionProps) {
+function FeatureCardsSection({ eyebrow, title, items, id }: FeatureCardsSectionProps) {
   return (
-    <section className={styles.section}>
+    <section className={styles.section} id={id}>
       <SectionHeading eyebrow={eyebrow} title={title} />
       <div className={styles.grid}>
         {items.map((item) => (

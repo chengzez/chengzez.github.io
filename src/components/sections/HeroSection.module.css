@@ -46,14 +46,20 @@
 
 .title {
   margin: 0;
-  font-family: var(--display-font);
-  font-size: clamp(3rem, 5vw, 5.4rem);
-  line-height: 0.96;
+  font-family: var(--headline-font);
+  font-size: clamp(2.9rem, 4.9vw, 5rem);
+  line-height: 1.02;
   letter-spacing: -0.05em;
+  text-wrap: balance;
+  text-shadow: 0 14px 34px rgba(83, 196, 255, 0.12);
 }
 
 .title span:last-child br {
   display: none;
+}
+
+.title span {
+  display: block;
 }
 
 .description {
@@ -116,6 +122,40 @@
 
 .chips span:nth-child(3n) {
   animation-delay: 2.1s;
+}
+
+.detailGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 26px;
+}
+
+.detailCard {
+  min-height: 132px;
+  padding: 18px;
+  border-radius: 22px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(242, 249, 255, 0.96)),
+    rgba(255, 255, 255, 0.86);
+  border: 1px solid rgba(83, 196, 255, 0.12);
+  box-shadow: 0 16px 36px rgba(14, 79, 127, 0.06);
+}
+
+.detailCard strong {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--text-primary);
+  font-size: 1rem;
+  font-weight: 900;
+  line-height: 1.35;
+}
+
+.detailCard p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.72;
 }
 
 .lab {
@@ -204,43 +244,38 @@
 .graphCard p {
   margin: 0 0 16px;
   color: var(--text-secondary);
+  font-weight: 700;
 }
 
-.graph {
+.curriculumGrid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  align-items: end;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 10px;
-  height: 150px;
 }
 
-.graph span {
-  border-radius: 16px 16px 8px 8px;
-  background: linear-gradient(180deg, rgba(33, 199, 180, 0.9), rgba(83, 196, 255, 0.4));
-}
-
-.graph span:nth-child(1) {
-  height: 76%;
-}
-
-.graph span:nth-child(2) {
-  height: 55%;
-}
-
-.graph span:nth-child(3) {
-  height: 88%;
+.curriculumChip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 58px;
+  padding: 12px 14px;
+  border-radius: 18px;
+  background:
+    linear-gradient(135deg, rgba(83, 196, 255, 0.14), rgba(255, 255, 255, 0.78)),
+    rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(83, 196, 255, 0.14);
+  color: var(--text-primary);
+  font-weight: 700;
+  line-height: 1.45;
+  box-shadow: 0 12px 28px rgba(14, 79, 127, 0.06);
 }
 
 .graphMeta {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  margin-top: 10px;
-  color: var(--text-primary);
-  text-align: center;
+  display: none;
 }
 
 .spotlightGrid {
   display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 14px;
 }
 
@@ -259,9 +294,17 @@
 
 .spotlightCard strong {
   display: block;
-  margin-bottom: 8px;
-  font-family: var(--display-font);
-  font-size: 1.1rem;
+  margin-bottom: 10px;
+  font-family: var(--body-font);
+  font-size: 1.14rem;
+  font-weight: 900;
+}
+
+.useCaseTitle {
+  color: var(--text-primary);
+  line-height: 1.45;
+  letter-spacing: 0;
+  text-wrap: balance;
 }
 
 .spotlightCard p {
@@ -313,6 +356,12 @@
   }
 
   .title {
-    font-size: clamp(2.6rem, 11vw, 4rem);
+    font-size: clamp(2.5rem, 10vw, 3.7rem);
+  }
+
+  .detailGrid,
+  .curriculumGrid,
+  .spotlightGrid {
+    grid-template-columns: 1fr;
   }
 }

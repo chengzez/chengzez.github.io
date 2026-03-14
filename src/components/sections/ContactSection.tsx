@@ -125,32 +125,26 @@ function ContactSection({
       </div>
 
       <form className={styles.formCard} onSubmit={handleSubmit}>
-        <div className={styles.grid}>
-          <label className={styles.field}>
-            <span>{form.nameLabel}</span>
-            <input name="name" type="text" placeholder="例如：李同学妈妈" required />
-          </label>
-
-          <label className={styles.field}>
-            <span>{form.emailLabel}</span>
-            <input
-              name="email"
-              type="email"
-              placeholder="例如：hello@example.com"
-              required
-            />
-          </label>
-        </div>
+        <label className={styles.field}>
+          <span>{form.emailLabel}</span>
+          <input
+            name="email"
+            type="email"
+            placeholder="例如：hello@example.com"
+            required
+          />
+        </label>
 
         <label className={styles.field}>
           <span>{form.levelLabel}</span>
-          <select name="grade" defaultValue="高中一年级">
-            <option>初中一年级</option>
-            <option>初中二年级</option>
-            <option>初中三年级</option>
-            <option>高中一年级</option>
-            <option>高中二年级</option>
-            <option>高中三年级</option>
+          <select name="grade" defaultValue="9年级">
+            <option>6年级</option>
+            <option>7年级</option>
+            <option>8年级</option>
+            <option>9年级</option>
+            <option>10年级</option>
+            <option>11年级</option>
+            <option>12年级</option>
           </select>
         </label>
 
