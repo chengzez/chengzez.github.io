@@ -9,6 +9,14 @@ npm install
 npm run dev
 ```
 
+如果要测试联系表单：
+
+```bash
+cp .env.example .env
+```
+
+然后把 `VITE_STATICFORMS_API_KEY` 换成你在 Static Forms 后台拿到的 Access Key。
+
 ## GitHub Pages 自动部署
 
 仓库已经包含 GitHub Actions 工作流：
@@ -19,6 +27,12 @@ npm run dev
 
 1. 进入 `Settings > Pages`
 2. `Source` 选择 `GitHub Actions`
-3. 推送到 `main` 分支后等待 Actions 完成部署
+3. 在 `Settings > Secrets and variables > Actions` 新建仓库 Secret：
+   `VITE_STATICFORMS_API_KEY`
+4. 推送到 `main` 分支后等待 Actions 完成部署
 
 当前配置按用户名主页仓库方式处理，适合 `chengzez.github.io` 这类仓库名。
+
+## Static Forms
+
+当前联系表单采用适合静态网站的第三方方案，构建后依然可以部署在 GitHub Pages 上。

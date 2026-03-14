@@ -1,10 +1,10 @@
 .page {
   min-height: 100vh;
   background:
-    radial-gradient(circle at top left, rgba(108, 235, 255, 0.16), transparent 24%),
-    radial-gradient(circle at 84% 12%, rgba(214, 255, 78, 0.12), transparent 14%),
-    radial-gradient(circle at right bottom, rgba(255, 146, 99, 0.12), transparent 20%),
-    linear-gradient(140deg, #050a13 0%, #07111e 46%, #040912 100%);
+    radial-gradient(circle at top left, rgba(83, 196, 255, 0.18), transparent 24%),
+    radial-gradient(circle at 84% 12%, rgba(187, 248, 95, 0.18), transparent 16%),
+    radial-gradient(circle at right bottom, rgba(64, 212, 194, 0.16), transparent 18%),
+    linear-gradient(180deg, #f7fcff 0%, #eef8ff 45%, #f8fcff 100%);
 }
 
 .page::before {
@@ -12,10 +12,24 @@
   position: fixed;
   inset: 0;
   background-image:
-    linear-gradient(rgba(108, 235, 255, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(108, 235, 255, 0.05) 1px, transparent 1px);
+    linear-gradient(rgba(83, 196, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(83, 196, 255, 0.08) 1px, transparent 1px);
   background-size: 68px 68px;
-  mask-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.85), transparent 92%);
+  mask-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.86), transparent 92%);
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.page::after {
+  content: "";
+  position: fixed;
+  top: 8%;
+  right: -140px;
+  width: 340px;
+  height: 340px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(83, 196, 255, 0.2), transparent 70%);
+  animation: drift 12s ease-in-out infinite alternate;
   pointer-events: none;
 }
 
@@ -35,6 +49,16 @@
   display: grid;
   gap: 28px;
   margin-top: 28px;
+}
+
+@keyframes drift {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(-90px, 55px, 0);
+  }
 }
 
 @media (max-width: 720px) {

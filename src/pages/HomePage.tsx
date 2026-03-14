@@ -1,4 +1,5 @@
 import CallToActionSection from "../components/sections/CallToActionSection";
+import ContactSection from "../components/sections/ContactSection";
 import ExperienceSection from "../components/sections/ExperienceSection";
 import FeatureCardsSection from "../components/sections/FeatureCardsSection";
 import HeroSection from "../components/sections/HeroSection";
@@ -51,6 +52,7 @@ function HomePage() {
               panelAction={homeContent.experience.panelAction}
             />
 
+            <ContactSection {...homeContent.contact} />
             <CallToActionSection {...homeContent.cta} />
           </div>
         </main>

@@ -1,11 +1,15 @@
 :root {
-  color-scheme: dark;
+  color-scheme: light;
   --display-font: "Space Grotesk", "Noto Sans SC", sans-serif;
   --body-font: "Noto Sans SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-  --text-primary: #f4f7fb;
-  --text-muted: #9db6c8;
-  --accent-cyan: #6cecff;
-  --accent-lime: #d6ff4e;
+  --text-primary: #0e2238;
+  --text-secondary: #5f7388;
+  --text-muted: #6f8498;
+  --accent-cyan: #53c4ff;
+  --accent-lime: #bbf85f;
+  --accent-teal: #21c7b4;
+  --surface-primary: rgba(255, 255, 255, 0.88);
+  --surface-soft: rgba(247, 251, 255, 0.92);
 }
 
 * {
@@ -20,6 +24,7 @@ body {
   margin: 0;
   font-family: var(--body-font);
   color: var(--text-primary);
+  background: #f6fbff;
 }
 
 a {

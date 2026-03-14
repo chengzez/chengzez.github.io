@@ -8,9 +8,15 @@
 .card {
   padding: 24px;
   border-radius: 24px;
-  background: rgba(10, 22, 42, 0.8);
-  border: 1px solid rgba(108, 235, 255, 0.12);
-  box-shadow: 0 20px 42px rgba(0, 0, 0, 0.18);
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(83, 196, 255, 0.12);
+  box-shadow: 0 20px 42px rgba(14, 79, 127, 0.08);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 26px 54px rgba(14, 79, 127, 0.12);
 }
 
 .card strong {
@@ -21,7 +27,7 @@
 }
 
 .card span {
-  color: var(--text-muted);
+  color: var(--text-secondary);
   line-height: 1.75;
 }
 

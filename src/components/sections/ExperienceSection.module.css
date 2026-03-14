@@ -1,9 +1,9 @@
 .section {
   padding: 38px;
-  border: 1px solid rgba(108, 235, 255, 0.14);
+  border: 1px solid rgba(83, 196, 255, 0.14);
   border-radius: 34px;
-  background: linear-gradient(180deg, rgba(10, 23, 42, 0.88), rgba(5, 12, 24, 0.96));
-  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.24);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(245, 251, 255, 0.97));
+  box-shadow: 0 28px 80px rgba(14, 79, 127, 0.08);
 }
 
 .layout {
@@ -24,8 +24,14 @@
   gap: 18px;
   padding: 24px;
   border-radius: 24px;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(108, 235, 255, 0.12);
+  background: rgba(255, 255, 255, 0.84);
+  border: 1px solid rgba(83, 196, 255, 0.12);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.timelineCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 22px 46px rgba(14, 79, 127, 0.08);
 }
 
 .timelineCard strong {
@@ -34,7 +40,7 @@
   width: 56px;
   height: 56px;
   border-radius: 18px;
-  background: linear-gradient(135deg, rgba(108, 235, 255, 0.18), rgba(214, 255, 78, 0.16));
+  background: linear-gradient(135deg, rgba(83, 196, 255, 0.18), rgba(187, 248, 95, 0.16));
   font-family: var(--display-font);
 }
 
@@ -45,7 +51,7 @@
 
 .timelineCard p {
   margin: 0;
-  color: var(--text-muted);
+  color: var(--text-secondary);
   line-height: 1.8;
 }
 
@@ -53,9 +59,9 @@
   padding: 28px;
   border-radius: 26px;
   background:
-    radial-gradient(circle at top right, rgba(255, 146, 99, 0.14), transparent 34%),
-    rgba(7, 17, 33, 0.9);
-  border: 1px solid rgba(108, 235, 255, 0.12);
+    radial-gradient(circle at top right, rgba(255, 211, 112, 0.18), transparent 34%),
+    rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(83, 196, 255, 0.12);
 }
 
 .panel span {
@@ -74,7 +80,7 @@
 .panel ul {
   margin: 0;
   padding-left: 20px;
-  color: var(--text-muted);
+  color: var(--text-secondary);
 }
 
 .panel li + li {
@@ -85,7 +91,7 @@
   display: inline-flex;
   margin-top: 22px;
   padding: 13px 20px;
-  border: 1px solid rgba(108, 235, 255, 0.16);
+  border: 1px solid rgba(83, 196, 255, 0.16);
   border-radius: 999px;
 }
 

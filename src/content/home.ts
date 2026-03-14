@@ -32,6 +32,13 @@ export type TimelineStep = {
   description: string;
 };
 
+export type ContactMethod = {
+  label: string;
+  value: string;
+  href?: string;
+  note: string;
+};
+
 export const homeContent = {
   nav: [
     { label: "课程路径", href: "#tracks" },
@@ -41,21 +48,22 @@ export const homeContent = {
   ] satisfies NavItem[],
   hero: {
     eyebrow: "面向初中生与高中生的 AI 与机器学习编程营",
-    title: "把未来科技\n变成学生今天就能上手的项目",
+    title: "把 AI 灵感\n变成学生今天就能做出来的作品",
     description:
-      "星跃 AI 编程营围绕 Python、数据思维、机器学习和创意表达设计课程，让学生在中文环境里真正理解 AI，完成能展示、能讲解、能继续升级的作品。",
-    primaryAction: { label: "预约体验课", href: "mailto:czheng0099@gmail.com" },
-    secondaryAction: { label: "查看课程路径", href: "#tracks" },
+      "星跃 AI 编程营围绕 Python、数据思维、机器学习和创意表达设计课程，让学生在中文环境里真正理解 AI、真正写出代码，并完成适合展示、适合申请、也适合继续升级的作品。",
+    primaryAction: { label: "预约体验课", href: "mailto:zcz20000909123@gmail.com" },
+    secondaryAction: { label: "立即咨询课程", href: "#contact" },
     chips: [
       "全中文授课",
       "适合初高中",
       "AI / ML 项目制",
       "作品展示导向",
+      "可衔接竞赛与申请",
     ],
     signal: {
       label: "本期主线",
-      title: "AI 创造力 x 编程表达力",
-      description: "从第一行 Python 到第一个机器学习作品，用一整套项目路径建立兴趣与能力。",
+      title: "AI 创造力 x 项目表达力",
+      description: "从第一行 Python 到第一个机器学习项目，用一整套成长路径建立兴趣、能力与未来方向。",
     },
     spotlight: [
       {
@@ -176,14 +184,44 @@ export const homeContent = {
       "强调创造力、问题拆解与项目完成度",
       "兼顾兴趣培养、学术进阶与未来方向探索",
     ],
-    panelAction: { label: "联系导师团队", href: "mailto:czheng0099@gmail.com" },
+    panelAction: { label: "联系导师团队", href: "mailto:zcz20000909123@gmail.com" },
+  },
+  contact: {
+    eyebrow: "联系与咨询",
+    title: "想了解营期、课程匹配或试听安排，可以直接给我们留言",
+    description:
+      "这个表单适合 GitHub Pages 静态网站使用，提交后会直接发送到你的收件邮箱。你也可以直接通过邮箱联系；电话位目前留了占位，等你给我号码后我可以立刻替换。",
+    methods: [
+      {
+        label: "邮箱咨询",
+        value: "zcz20000909123@gmail.com",
+        href: "mailto:zcz20000909123@gmail.com",
+        note: "适合课程咨询、试听预约与合作联系",
+      },
+      {
+        label: "电话咨询",
+        value: "(917) 287-5219",
+        href: "tel:+19172875219",
+        note: "适合快速确认课程安排、营期和试听时间",
+      },
+    ] satisfies ContactMethod[],
+    form: {
+      nameLabel: "学生或家长姓名",
+      emailLabel: "联系邮箱",
+      levelLabel: "学生年级",
+      messageLabel: "想咨询的内容",
+      submitLabel: "发送咨询",
+      successMessage: "咨询已发送，我们会尽快通过邮件联系你。",
+      errorMessage: "发送失败，请稍后重试或直接发送邮件到 zcz20000909123@gmail.com。",
+      configMessage: "请先在 GitHub Actions 中配置 Static Forms 的 Access Key。",
+    },
   },
   cta: {
     eyebrow: "咨询报名",
-    title: "让首页真正像一个会吸引学生和家长的 AI 编程营入口",
+    title: "把这个主页变成真正能招生、能展示、也能直接接收咨询的 AI 编程营入口",
     description:
-      "适合寒暑假营、周末班、项目制训练营或 AI 启蒙课程展示页。欢迎通过邮箱联系，了解营期、排课方式与定制化方向。",
-    primaryAction: { label: "邮箱咨询", href: "mailto:czheng0099@gmail.com" },
+      "适合寒暑假营、周末班、项目制训练营或 AI 启蒙课程展示页。现在这版已经适配 React、GitHub Pages 和静态表单服务，后面继续扩展课程详情页会更轻松。",
+    primaryAction: { label: "立即咨询", href: "#contact" },
     secondaryAction: { label: "返回顶部", href: "#top" },
   },
 } as const;

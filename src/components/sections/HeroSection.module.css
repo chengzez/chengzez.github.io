@@ -9,10 +9,14 @@
 .lab {
   position: relative;
   overflow: hidden;
-  border: 1px solid rgba(108, 235, 255, 0.15);
+  border: 1px solid rgba(83, 196, 255, 0.14);
   border-radius: 34px;
-  background: linear-gradient(180deg, rgba(10, 22, 43, 0.9), rgba(6, 14, 29, 0.98));
-  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.28);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(247, 252, 255, 0.98)),
+    rgba(255, 255, 255, 0.92);
+  box-shadow:
+    0 30px 80px rgba(14, 79, 127, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 
 .copy {
@@ -26,7 +30,7 @@
   width: 300px;
   height: 300px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(108, 235, 255, 0.28), transparent 70%);
+  background: radial-gradient(circle, rgba(83, 196, 255, 0.18), transparent 70%);
   pointer-events: none;
 }
 
@@ -55,7 +59,7 @@
 .description {
   max-width: 58ch;
   margin: 24px 0 0;
-  color: var(--text-muted);
+  color: var(--text-secondary);
   font-size: 1.03rem;
   line-height: 1.85;
 }
@@ -79,13 +83,14 @@
 }
 
 .primaryAction {
-  background: linear-gradient(135deg, #d6ff4e, #6cecff);
-  color: #041019;
+  background: linear-gradient(135deg, #67efe0, #66c7ff);
+  color: #08213a;
+  box-shadow: 0 18px 40px rgba(102, 199, 255, 0.18);
 }
 
 .secondaryAction {
-  border: 1px solid rgba(108, 235, 255, 0.18);
-  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(83, 196, 255, 0.16);
+  background: rgba(255, 255, 255, 0.74);
 }
 
 .chips {
@@ -97,11 +102,20 @@
 
 .chips span {
   padding: 10px 14px;
-  border: 1px solid rgba(108, 235, 255, 0.14);
+  border: 1px solid rgba(83, 196, 255, 0.14);
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.04);
-  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--text-secondary);
   font-size: 0.92rem;
+  animation: floatChip 6s ease-in-out infinite;
+}
+
+.chips span:nth-child(2n) {
+  animation-delay: 1.4s;
+}
+
+.chips span:nth-child(3n) {
+  animation-delay: 2.1s;
 }
 
 .lab {
@@ -114,9 +128,9 @@
   padding: 24px;
   border-radius: 24px;
   background:
-    linear-gradient(135deg, rgba(108, 235, 255, 0.16), rgba(214, 255, 78, 0.08)),
-    rgba(9, 20, 38, 0.95);
-  border: 1px solid rgba(108, 235, 255, 0.15);
+    linear-gradient(135deg, rgba(83, 196, 255, 0.18), rgba(187, 248, 95, 0.12)),
+    rgba(255, 255, 255, 0.84);
+  border: 1px solid rgba(83, 196, 255, 0.14);
 }
 
 .signalCard span {
@@ -136,7 +150,7 @@
 
 .signalCard p {
   margin: 12px 0 0;
-  color: var(--text-muted);
+  color: var(--text-secondary);
   line-height: 1.8;
 }
 
@@ -148,9 +162,9 @@
   padding: 20px;
   border-radius: 28px;
   background:
-    radial-gradient(circle at top right, rgba(255, 146, 99, 0.15), transparent 24%),
-    linear-gradient(180deg, rgba(8, 18, 35, 0.96), rgba(5, 12, 24, 0.96));
-  border: 1px solid rgba(108, 235, 255, 0.1);
+    radial-gradient(circle at top right, rgba(255, 214, 130, 0.25), transparent 24%),
+    linear-gradient(180deg, rgba(251, 254, 255, 0.94), rgba(240, 248, 255, 0.98));
+  border: 1px solid rgba(83, 196, 255, 0.1);
 }
 
 .orbit {
@@ -160,10 +174,11 @@
   width: 110px;
   height: 110px;
   border-radius: 50%;
-  border: 1px solid rgba(108, 235, 255, 0.18);
+  border: 1px solid rgba(83, 196, 255, 0.18);
   box-shadow:
-    inset 0 0 22px rgba(108, 235, 255, 0.12),
-    0 0 30px rgba(108, 235, 255, 0.06);
+    inset 0 0 22px rgba(83, 196, 255, 0.12),
+    0 0 30px rgba(83, 196, 255, 0.06);
+  animation: orbitSpin 12s linear infinite;
 }
 
 .orbit::before,
@@ -182,13 +197,13 @@
 .graphCard {
   padding: 18px;
   border-radius: 22px;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(108, 235, 255, 0.12);
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(83, 196, 255, 0.12);
 }
 
 .graphCard p {
   margin: 0 0 16px;
-  color: var(--text-muted);
+  color: var(--text-secondary);
 }
 
 .graph {
@@ -201,7 +216,7 @@
 
 .graph span {
   border-radius: 16px 16px 8px 8px;
-  background: linear-gradient(180deg, rgba(214, 255, 78, 0.9), rgba(108, 235, 255, 0.38));
+  background: linear-gradient(180deg, rgba(33, 199, 180, 0.9), rgba(83, 196, 255, 0.4));
 }
 
 .graph span:nth-child(1) {
@@ -232,8 +247,14 @@
 .spotlightCard {
   padding: 18px;
   border-radius: 22px;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(108, 235, 255, 0.12);
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(83, 196, 255, 0.12);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.spotlightCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 22px 48px rgba(14, 79, 127, 0.08);
 }
 
 .spotlightCard strong {
@@ -245,13 +266,34 @@
 
 .spotlightCard p {
   margin: 0;
-  color: var(--text-muted);
+  color: var(--text-secondary);
   line-height: 1.75;
 }
 
 .primaryAction:hover,
 .secondaryAction:hover {
   transform: translateY(-2px);
+}
+
+@keyframes orbitSpin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes floatChip {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
 }
 
 @media (max-width: 1080px) {
