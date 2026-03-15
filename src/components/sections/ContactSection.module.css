@@ -123,6 +123,18 @@
   min-height: 140px;
 }
 
+.captchaWrap {
+  min-height: 84px;
+  padding: 14px;
+  border: 1px solid rgba(16, 145, 207, 0.16);
+  border-radius: 18px;
+  background: rgba(249, 253, 255, 0.98);
+}
+
+.captchaMount {
+  min-height: 78px;
+}
+
 .field input:focus,
 .field select:focus,
 .field textarea:focus {
@@ -203,5 +215,9 @@
 
   .formFooter button {
     width: 100%;
+  }
+
+  .captchaWrap {
+    overflow-x: auto;
   }
 }
