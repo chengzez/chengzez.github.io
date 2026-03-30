@@ -57,6 +57,7 @@ function ContactSection({
   const [submitState, setSubmitState] = useState<SubmitState>("idle");
   const [captchaState, setCaptchaState] = useState<CaptchaState>(siteKey ? "loading" : "idle");
   const [captchaToken, setCaptchaToken] = useState("");
+  const [submitFeedback, setSubmitFeedback] = useState("");
   const [message, setMessage] = useState("");
 
   const isConfigured = Boolean(apiKey && siteKey);
@@ -119,6 +120,7 @@ function ContactSection({
         theme: "light",
         callback: (token: string) => {
           setCaptchaToken(token);
+          setSubmitFeedback("");
           setSubmitState("idle");
         },
         "expired-callback": () => {
@@ -140,6 +142,28 @@ function ContactSection({
     }
   }
 
+  function getFriendlySubmitError(errorMessage: string) {
+    const normalized = errorMessage.toLowerCase();
+
+    if (normalized.includes("invalid api key")) {
+      return "Static Forms API Key 无效，请检查 GitHub Actions Secret `VITE_STATICFORMS_API_KEY`。";
+    }
+
+    if (normalized.includes("email not verified")) {
+      return "Static Forms 账号邮箱尚未验证，请先在 Static Forms 后台完成邮箱验证。";
+    }
+
+    if (normalized.includes("captcha") || normalized.includes("recaptcha")) {
+      return "reCAPTCHA 验证未通过。请确认 Static Forms 后台已经填写 reCAPTCHA Secret Key，并且 Google 后台已加入 `chengzez.github.io`、`staticforms.dev` 和 `localhost`。";
+    }
+
+    if (normalized.includes("monthly") || normalized.includes("rate limit")) {
+      return "Static Forms 本月额度已用尽，请等待额度重置或升级套餐后再提交。";
+    }
+
+    return form.errorMessage;
+  }
+
   const helperText = useMemo(() => {
     if (!isConfigured) {
       return form.configMessage;
@@ -158,7 +182,7 @@ function ContactSection({
     }
 
     if (submitState === "error") {
-      return form.errorMessage;
+      return submitFeedback || form.errorMessage;
     }
 
     if (!captchaToken) {
@@ -173,26 +197,39 @@ function ContactSection({
     form.errorMessage,
     form.successMessage,
     isConfigured,
+    submitFeedback,
     submitState,
   ]);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
-    if (!isConfigured || submitState === "submitting" || !captchaToken) {
+    if (submitState === "submitting") {
+      return;
+    }
+
+    if (!isConfigured) {
+      setSubmitFeedback(form.configMessage);
+      setSubmitState("error");
+      return;
+    }
+
+    if (!captchaToken) {
+      setSubmitFeedback("请先完成验证码，再提交咨询。");
       setSubmitState("error");
       return;
     }
 
     const formElement = event.currentTarget;
     const formData = new FormData(formElement);
-    formData.append("apiKey", apiKey);
-    formData.append("subject", "星跃 AI 编程营新咨询");
-    formData.append("replyTo", String(formData.get("email") ?? ""));
-    formData.append("honeypot", "");
-    formData.append("g-recaptcha-response", captchaToken);
+    formData.set("apiKey", apiKey);
+    formData.set("subject", "星跃 AI 编程营新咨询");
+    formData.set("replyTo", String(formData.get("email") ?? ""));
+    formData.set("honeypot", "");
+    formData.set("g-recaptcha-response", captchaToken);
 
     try {
+      setSubmitFeedback("");
       setSubmitState("submitting");
       const response = await fetch("https://api.staticforms.dev/submit", {
         method: "POST",
@@ -213,9 +250,14 @@ function ContactSection({
       formElement.reset();
       setMessage("");
       resetCaptcha();
+      setSubmitFeedback("");
       setSubmitState("success");
-    } catch {
+    } catch (error) {
+      console.error("Static Forms submission failed:", error);
       resetCaptcha();
+      setSubmitFeedback(
+        error instanceof Error ? getFriendlySubmitError(error.message) : form.errorMessage,
+      );
       setSubmitState("error");
     }
   }
@@ -255,11 +297,23 @@ function ContactSection({
 
       <form className={styles.formCard} onSubmit={handleSubmit}>
         <label className={styles.field}>
+          <span>{form.nameLabel}</span>
+          <input
+            name="name"
+            type="text"
+            placeholder="例如：王同学妈妈"
+            autoComplete="name"
+            required
+          />
+        </label>
+
+        <label className={styles.field}>
           <span>{form.emailLabel}</span>
           <input
             name="email"
             type="email"
             placeholder="例如：hello@example.com"
+            autoComplete="email"
             required
           />
         </label>
@@ -292,7 +346,14 @@ function ContactSection({
         <div className={styles.field}>
           <span>{form.captchaLabel}</span>
           <div className={styles.captchaWrap}>
-            {siteKey ? <div ref={captchaContainerRef} className={styles.captchaMount} /> : null}
+            {siteKey ? (
+              <div ref={captchaContainerRef} className={styles.captchaMount} />
+            ) : (
+              <div className={styles.captchaPlaceholder}>
+                未检测到验证码配置。请在 GitHub Actions Variables 或 Secrets 中设置
+                `VITE_RECAPTCHA_SITE_KEY`。
+              </div>
+            )}
           </div>
         </div>
 

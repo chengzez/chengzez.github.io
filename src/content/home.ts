@@ -199,7 +199,8 @@ export const homeContent = {
       submitLabel: "发送咨询",
       successMessage: "咨询已发送，我们会尽快通过邮件联系你。",
       errorMessage: "发送失败，请稍后重试或直接发送邮件到 zcz20000909123@gmail.com。",
-      configMessage: "请先配置 Static Forms API Key 和 reCAPTCHA Site Key。",
+      configMessage:
+        "请先配置 `VITE_STATICFORMS_API_KEY`、`VITE_RECAPTCHA_SITE_KEY`，并在 Static Forms 后台填写 reCAPTCHA Secret Key。注意 Vite 只会暴露以 `VITE_` 开头的变量。",
     },
   },
 } as const;

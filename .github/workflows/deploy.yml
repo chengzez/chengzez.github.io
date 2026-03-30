@@ -36,6 +36,21 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Validate form configuration
+        env:
+          VITE_STATICFORMS_API_KEY: ${{ secrets.VITE_STATICFORMS_API_KEY }}
+          VITE_RECAPTCHA_SITE_KEY: ${{ vars.VITE_RECAPTCHA_SITE_KEY || secrets.VITE_RECAPTCHA_SITE_KEY }}
+        run: |
+          if [ -z "$VITE_STATICFORMS_API_KEY" ]; then
+            echo "::error title=Missing VITE_STATICFORMS_API_KEY::Add the VITE_STATICFORMS_API_KEY Actions secret before deploying."
+            exit 1
+          fi
+
+          if [ -z "$VITE_RECAPTCHA_SITE_KEY" ]; then
+            echo "::error title=Missing VITE_RECAPTCHA_SITE_KEY::Add the VITE_RECAPTCHA_SITE_KEY Actions variable or secret before deploying."
+            exit 1
+          fi
+
       - name: Build site
         run: npm run build
         env:

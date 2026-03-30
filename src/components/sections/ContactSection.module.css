@@ -135,6 +135,12 @@
   min-height: 78px;
 }
 
+.captchaPlaceholder {
+  color: #9c5a2f;
+  line-height: 1.7;
+  font-size: 0.94rem;
+}
+
 .field input:focus,
 .field select:focus,
 .field textarea:focus {
